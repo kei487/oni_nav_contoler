@@ -1,0 +1,5 @@
+repositories:
+  oni_msgs:
+    type: git
+    url: git@github.com:kei487/oni_msgs.git
+    version: main

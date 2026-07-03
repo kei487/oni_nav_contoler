@@ -11,6 +11,13 @@ fi
 
 source /opt/ros/humble/setup.bash
 
+if [[ ! -f "$SCRIPT_DIR/oni_msgs/package.xml" ]]; then
+  echo "oni_msgs not found. Import dependency package:" >&2
+  echo "  vcs import < oni_nav.repos" >&2
+  echo "  # or: git clone git@github.com:kei487/oni_msgs.git oni_msgs" >&2
+  exit 1
+fi
+
 if [[ ! -f "$SCRIPT_DIR/install/setup.bash" ]]; then
   echo "Workspace not built. Run:" >&2
   echo "  source /opt/ros/humble/setup.bash" >&2

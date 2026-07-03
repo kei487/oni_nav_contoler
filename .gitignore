@@ -2,3 +2,4 @@ install
 build
 log
 deps/
+oni_msgs/

@@ -58,11 +58,12 @@
 ## 4. ファイル構成
 
 ```
-oni_nav_contoler/
+oni_nav_contoler/             # ワークスペースルート
 ├── requirement.txt
 ├── plan.md
 ├── README.md
-├── oni_msgs/
+├── oni_nav.repos
+├── oni_msgs/                 # 別リポジトリ（vcs import）
 │   ├── CMakeLists.txt
 │   ├── package.xml
 │   └── msg/
@@ -241,7 +242,7 @@ flowchart LR
 
 ### Phase 0: 基盤構築 ✅ 完了
 
-1. `oni_msgs` パッケージ作成
+1. `oni_msgs` パッケージ作成（別リポジトリ [oni_msgs](https://github.com/kei487/oni_msgs)）
 2. `oni_nav_controller` の `ament_cmake` スケルトン
 3. `config/nav_controller.yaml` に全パラメータ定義
 4. `NavControllerNode` のサブスクライバ・50 ms タイマー・`cmd_vel` パブリッシュ（スタブ）

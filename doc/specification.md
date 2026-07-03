@@ -296,10 +296,17 @@ J = \sum_{k} \left( Q\|\mathbf{p}_k - \mathbf{p}_{target}\|^2 + R\|\mathbf{u}_k\
 
 ### 9.1 ROS パッケージ
 
-| パッケージ | 説明 |
-|-----------|------|
-| `oni_msgs` | カスタムメッセージ |
-| `oni_nav_controller` | メインノード・ライブラリ |
+| パッケージ | リポジトリ | 説明 |
+|-----------|-----------|------|
+| `oni_msgs` | [oni_msgs](https://github.com/kei487/oni_msgs)（別リポジトリ） | カスタムメッセージ |
+| `oni_nav_controller` | 本リポジトリ | メインノード・ライブラリ |
+
+ワークスペース取得:
+
+```bash
+cd oni_nav_contoler
+vcs import < oni_nav.repos
+```
 
 ### 9.2 外部ライブラリ
 
@@ -364,13 +371,14 @@ ros2 topic echo /nav/target_lost
 ## 11. ファイル構成（実装）
 
 ```
-oni_nav_contoler/
+oni_nav_contoler/             # ワークスペースルート
 ├── exec.bash
+├── oni_nav.repos
 ├── doc/
 │   ├── specification.md    # 本書
 │   ├── requirement.txt
 │   └── plan.md
-├── oni_msgs/
+├── oni_msgs/               # 別リポジトリ（vcs import）
 │   └── msg/                  # BBox, SystemState, NavDebug
 └── oni_nav_controller/
     ├── include/oni_nav_controller/

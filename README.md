@@ -24,6 +24,18 @@
 - Python 3（Acados コード生成・モック用）
 - **Acados v0.3.6**（`deps/acados_install` にローカルインストール）
 
+## ワークスペース構成
+
+`oni_msgs` は別リポジトリです。本リポジトリをワークスペースルートとして、依存パッケージを取得してからビルドします。
+
+```bash
+cd /path/to/oni_nav_contoler
+
+# oni_msgs をワークスペースに取得（初回のみ）
+vcs import < oni_nav.repos
+# または: git clone git@github.com:kei487/oni_msgs.git oni_msgs
+```
+
 ## ビルド
 
 ```bash
@@ -88,13 +100,14 @@ ros2 launch oni_nav_controller mock_nav_test.launch.py mode:=chase
 ## パッケージ構成
 
 ```
-oni_nav_contoler/
+oni_nav_contoler/             # ワークスペースルート
 ├── exec.bash                 # 起動スクリプト
+├── oni_nav.repos             # vcs import 用（oni_msgs）
 ├── doc/
 │   ├── specification.md      # 仕様書（本ドキュメントの詳細版）
 │   ├── requirement.txt     # 要件定義（原文）
 │   └── plan.md               # 開発計画
-├── oni_msgs/                 # カスタムメッセージ
+├── oni_msgs/                 # 別リポジトリ（vcs import / git clone）
 ├── oni_nav_controller/       # メインノード
 │   ├── config/nav_controller.yaml
 │   ├── launch/
@@ -102,6 +115,8 @@ oni_nav_contoler/
 │   └── c_generated_code/     # Acados 生成 C コード
 └── deps/                     # Acados（.gitignore）
 ```
+
+関連リポジトリ: [oni_msgs](https://github.com/kei487/oni_msgs) — カスタムメッセージ定義
 
 ## パラメータ
 
