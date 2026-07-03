@@ -1,0 +1,58 @@
+nav_controller_node:
+  ros__parameters:
+    control_rate_hz: 20.0
+
+    # Topics
+    bbox_topic: "/perception/bbox"
+    imu_topic: "/livox/imu"
+    lidar_topic: "/livox/lidar"
+    odom_topic: "/odom"
+    system_state_topic: "/system/state"
+    cmd_vel_topic: "/cmd_vel"
+    target_lost_topic: "/nav/target_lost"
+    debug_topic: "/nav/debug"
+
+    # Target localization
+    h_thresh: 120.0
+    h_hysteresis: 15.0
+    K_calib: 200.0
+    human_height: 1.7
+    image_width: 640.0
+    image_height: 480.0
+    camera_h_fov: 1.0471975511965976
+    camera_v_fov: 0.7853981633974483
+    lidar_stable_frames: 3
+    dbscan_eps: 0.15
+    dbscan_min_pts: 5
+    leg_cluster_min_height: 0.05
+    leg_cluster_max_height: 1.2
+    leg_cluster_max_width: 0.8
+    base_frame: "base_link"
+    camera_frame: "camera_optical_frame"
+    use_dead_reckon_on_occlusion: true
+
+    # NMPC (Acados) - used in Phase 3+
+    horizon_N: 20
+    dt: 0.05
+    v_max: 1.0
+    omega_max: 2.0
+    a_max: 2.0
+    alpha_max: 4.0
+    d_safe: 0.4
+  # Q, R, S weights as flat arrays (x,y / ax,ay,alpha / dax,day,dalpha)
+    Q: [10.0, 10.0]
+    R: [0.1, 0.1, 0.1]
+    S: [1.0, 1.0, 1.0]
+
+    # Failsafe
+    target_lost_timeout_ms: 300.0
+    reacquire_spin_rate: 0.3
+    decel_rate: 2.0
+
+    # EKF state estimator
+    ekf_process_noise_pos: 0.01
+    ekf_process_noise_theta: 0.01
+    ekf_process_noise_vel: 0.1
+    ekf_process_noise_omega: 0.1
+    ekf_meas_noise_vel: 0.05
+    ekf_meas_noise_omega: 0.05
